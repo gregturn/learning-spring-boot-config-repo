@@ -11,7 +11,7 @@ spring:
     stream:
       bindings:
         output:
-          destination: learning-spring-boot
+          destination: learning-spring-boot-comments
           group: comments-service
           content-type: application/json
   

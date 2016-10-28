@@ -6,6 +6,6 @@ spring:
     stream:
       bindings:
         input:
-          destination: learning-spring-boot
+          destination: learning-spring-boot-chat
           group: comments-chat
           content-type: application/json
