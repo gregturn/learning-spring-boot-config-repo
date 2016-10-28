@@ -10,10 +10,8 @@ spring:
   cloud:
     stream:
       bindings:
-        input:
-          destination: learning-spring-boot
         output:
           destination: learning-spring-boot
-          group: comments
+          group: comments-service
           content-type: application/json
   

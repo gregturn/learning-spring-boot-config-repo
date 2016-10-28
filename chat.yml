@@ -1,0 +1,11 @@
+server:
+  port: 8200
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: learning-spring-boot
+          group: comments-chat
+          content-type: application/json
