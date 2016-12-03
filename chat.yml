@@ -36,6 +36,21 @@ security:
   sessions: always
 # end::security[]
 
+# tag::ribbon[]
+zuul:
+  ribbon-isolation-strategy: thread
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+# end::ribbon[]
+
 spring:
   cloud:
     stream:
