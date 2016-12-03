@@ -3,6 +3,8 @@ server:
 
 security:
   sessions: never
+  user:
+    password: password
   
 # tag::secured[]
 eureka:
