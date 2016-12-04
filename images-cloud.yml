@@ -1,0 +1,4 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://learning-spring-boot-eureka-server.cfapps.io/eureka/
