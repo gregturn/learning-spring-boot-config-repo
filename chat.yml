@@ -37,8 +37,6 @@ security:
 # end::security[]
 
 # tag::ribbon[]
-zuul:
-  ribbon-isolation-strategy: thread
 hystrix:
   command:
     default:
