@@ -20,9 +20,6 @@ eureka:
 # end::secured[]
 
 spring:
-  http:
-    multipart:
-      max-file-size: 10MB
   cloud:
     stream:
       bindings:
