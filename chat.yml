@@ -2,26 +2,37 @@ server:
   port: 8080
   
 # tag::zuul[]
-zuul:
-  routes:
-    imagesService:
-      path: /imagesService/**
-      serviceId: IMAGES
-      sensitive-headers:
-    images:
-      path: /images/**
-      serviceId: IMAGES
-      sensitive-headers:
-      stripPrefix: false
-    mainCss:
-      path: /main.css
-      serviceId: IMAGES
-      sensitive-headers:
-    commentsService:
-      path: /comments/**
-      serviceId: IMAGES
-      sensitive-headers:
-      stripPrefix: false
+spring:
+  cloud:
+    gateway:
+      routes:
+      # ========================================================
+      - id: imagesService
+        uri: lb://IMAGES
+        predicates:
+        - Path=/imagesService/**
+        filters:
+        - RewritePath=/imagesService/(?<segment>.*), /$\{segment}
+        - RewritePath=/imagesService, /
+        - SaveSession
+      - id: images
+        uri: lb://IMAGES
+        predicates:
+        - Path=/images/**
+        filters:
+        - SaveSession
+      - id: mainCss
+        uri: lb://IMAGES
+        predicates:
+        - Path=/main.css
+        filters:
+        - SaveSession
+      - id: commentsService
+        uri: lb://IMAGES
+        predicates:
+        - Path=/comments/**
+        filters:
+        - SaveSession
 # end::zuul[]
 
 # tag::secured[]
