@@ -34,6 +34,22 @@ spring:
         filters:
         - SaveSession
 # end::zuul[]
+    stream:
+      bindings:
+        input:
+          destination: learning-spring-boot-chat
+          group: comments-chat
+          content-type: application/json
+        newComments:
+          destination: learning-spring-boot-chat
+          group: comments-chat
+          content-type: application/json
+        clientToBroker:
+          destination: learning-spring-boot-chat-user-messages
+          group: app-chatMessages
+        brokerToClient:
+          destination: learning-spring-boot-chat-user-messages
+          group: topic-chatMessages
 
 # tag::secured[]
 eureka:
@@ -59,22 +75,3 @@ ribbon:
   ConnectTimeout: 3000
   ReadTimeout: 60000
 # end::ribbon[]
-
-spring:
-  cloud:
-    stream:
-      bindings:
-        input:
-          destination: learning-spring-boot-chat
-          group: comments-chat
-          content-type: application/json
-        newComments:
-          destination: learning-spring-boot-chat
-          group: comments-chat
-          content-type: application/json
-        clientToBroker:
-          destination: learning-spring-boot-chat-user-messages
-          group: app-chatMessages
-        brokerToClient:
-          destination: learning-spring-boot-chat-user-messages
-          group: topic-chatMessages
